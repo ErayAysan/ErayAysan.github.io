@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const cerceveler = document.querySelectorAll(".cerceve1");
     const tabloBasligi = document.querySelector("caption");
     const tabloCerceve = document.querySelector(".tablocerceve1");
+    const footer = document.getElementById("site-footer");
 
     function temaUygula(temaTuru) {
         if (temaTuru === "koyu") {
@@ -21,6 +22,16 @@ document.addEventListener("DOMContentLoaded", function() {
             }
             if (tabloBasligi) {
                 tabloBasligi.style.color = "white";
+            }
+            if (footer) {
+                footer.classList.remove("bg-light");
+                footer.classList.add("bg-dark");
+                footer.style.color = "white";
+                const footerLink = footer.querySelector("a");
+                if (footerLink) {
+                    footerLink.classList.remove("text-dark");
+                    footerLink.classList.add("text-white");
+                }
             }
 
             menuLinkleri.forEach(function(link) {
@@ -43,6 +54,16 @@ document.addEventListener("DOMContentLoaded", function() {
             }
             if (tabloBasligi) {
                 tabloBasligi.style.color = "black";
+            }
+            if (footer) {
+                footer.classList.remove("bg-dark");
+                footer.classList.add("bg-light");
+                footer.style.color = "black";
+                const footerLink = footer.querySelector("a");
+                if (footerLink) {
+                    footerLink.classList.remove("text-white");
+                    footerLink.classList.add("text-dark");
+                }
             }
 
             menuLinkleri.forEach(function(link) {

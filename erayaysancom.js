@@ -4,10 +4,12 @@ document.addEventListener("DOMContentLoaded", function() {
     
     const tablo = document.querySelector(".table");
     const menuLinkleri = document.querySelectorAll(".nav-link");
+    const menuIkonlari = document.querySelectorAll(".nav-link i");
     const cerceveler = document.querySelectorAll(".cerceve1");
     const tabloBasligi = document.querySelector("caption");
     const tabloCerceve = document.querySelector(".tablocerceve1");
     const footer = document.getElementById("site-footer");
+    const projelerimIkon = document.getElementById("projelerim-ikon");
 
     function temaUygula(temaTuru) {
         if (temaTuru === "koyu") {
@@ -33,15 +35,20 @@ document.addEventListener("DOMContentLoaded", function() {
                     footerLink.classList.add("text-white");
                 }
             }
-
+            
             menuLinkleri.forEach(function(link) {
                 link.classList.remove("text-dark");
                 link.classList.add("text-white");
             });
-
+            
+            menuIkonlari.forEach(function(ikon) {
+                ikon.style.color = "white";
+            });
+            
             cerceveler.forEach(function(cerceve) {
                 cerceve.style.borderColor = "white";
             });
+            
         } else {
             document.body.style.backgroundColor = "white";
             document.body.style.color = "black";
@@ -65,15 +72,23 @@ document.addEventListener("DOMContentLoaded", function() {
                     footerLink.classList.add("text-dark");
                 }
             }
-
+            
             menuLinkleri.forEach(function(link) {
                 link.classList.remove("text-white");
                 link.classList.add("text-dark");
             });
-
+            
+            menuIkonlari.forEach(function(ikon) {
+                ikon.style.color = "black";
+            });
+            
             cerceveler.forEach(function(cerceve) {
                 cerceve.style.borderColor = "";
             });
+            
+            if (projelerimIkon) {
+                projelerimIkon.style.color = "rgb(0, 0, 0)";
+            }
         }
     }
 
@@ -84,17 +99,21 @@ document.addEventListener("DOMContentLoaded", function() {
         temaUygula("acik");
     }
 
-    koyuButon.addEventListener("click", function(e) {
-        e.preventDefault();
-        temaUygula("koyu");
-        localStorage.setItem("secilenTema", "koyu");
-    });
+    if (koyuButon) {
+        koyuButon.addEventListener("click", function(e) {
+            e.preventDefault();
+            temaUygula("koyu");
+            localStorage.setItem("secilenTema", "koyu");
+        });
+    }
 
-    acikButon.addEventListener("click", function(e) {
-        e.preventDefault();
-        temaUygula("acik");
-        localStorage.setItem("secilenTema", "acik");
-    });
+    if (acikButon) {
+        acikButon.addEventListener("click", function(e) {
+            e.preventDefault();
+            temaUygula("acik");
+            localStorage.setItem("secilenTema", "acik");
+        });
+    }
 
     const iletisimFormu = document.querySelector("form");
     if (iletisimFormu) {
